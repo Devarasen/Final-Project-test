@@ -1,0 +1,30 @@
+{
+  "name": "ecorewards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devarasen/EcoRewards.git"
+  },
+  "author": "Dev and Marcelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devarasen/EcoRewards/issues"
+  },
+  "homepage": "https://github.com/Devarasen/EcoRewards#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

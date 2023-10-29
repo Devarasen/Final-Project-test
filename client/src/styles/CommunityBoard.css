@@ -1,0 +1,97 @@
+.community-board {
+    padding: 30px;
+    border: solid green 5px;
+    min-height: 80vh;
+    text-align: center;    
+}
+
+.community-board h2 {
+    border: 2px solid black; 
+    border-radius: 20px;
+    background-color: #1c681f;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 0px;
+}
+
+.post-form {
+    text-align: center;
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+    gap: 10px;   
+    padding-bottom: 10px;     
+}
+
+.post-form textarea {
+    width: 75%; 
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: none; 
+    outline: none;
+    height: 40px; 
+}
+
+.post-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.post-form button:hover {
+    background-color: #45a049;
+}
+
+.post {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.post-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.post-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* This will make the image round */
+}
+
+.post-content {
+    margin-bottom: 15px;
+}
+
+.post-timestamp {
+    font-size: 12px;
+    color: #888;
+}
+
+.see-more-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s;
+}
+
+.see-more-btn:hover {
+    background-color: #45a049;
+}

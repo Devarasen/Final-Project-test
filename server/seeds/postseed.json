@@ -1,0 +1,12 @@
+[
+  {
+    "author": "ObjectId_of_alice123",
+    "content": "Just visited the Grand Canyon. It's breathtaking!",
+    "timestamp": "2023-10-28T12:30:00.000Z"
+  },
+  {
+    "author": "ObjectId_of_bob456",
+    "content": "Cooked a new dish today. Will share the recipe soon.",
+    "timestamp": "2023-10-28T14:45:00.000Z"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "post": "ObjectId_of_alice_post",
+    "author": "ObjectId_of_bob456",
+    "content": "Wow! I've always wanted to visit. Any travel tips?",
+    "timestamp": "2023-10-28T13:00:00.000Z"
+  },
+  {
+    "post": "ObjectId_of_bob_post",
+    "author": "ObjectId_of_alice123",
+    "content": "That looks delicious! Can't wait for the recipe.",
+    "timestamp": "2023-10-28T15:15:00.000Z"
+  }
+]

@@ -1,0 +1,59 @@
+header {
+    background-color: rgb(27, 255, 84);
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid black; 
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(148, 247, 148);
+}
+
+.logo-container a {
+    text-decoration: none; /* Remove the underline */
+    color: rgb(0, 0, 0); /* Set the text color to white */
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end; 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 10px;
+    padding: 10px; 
+    cursor: pointer;
+    border-radius: 15px;
+    border: 2px solid black; 
+    border-radius: 20px;
+    background-color: rgb(148, 247, 148);
+}
+
+nav li a { /* Targeting the anchor tags within the list items */
+    text-decoration: none; /* Remove the underline */
+    color: rgb(114, 112, 112); /* Set the text color to white */
+}
+
+nav li a:hover { /* Optional: add a hover effect if you wish */
+    color: rgb(0, 0, 0); /* Change to a different color on hover, for example */
+}

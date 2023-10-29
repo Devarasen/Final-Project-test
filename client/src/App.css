@@ -1,0 +1,24 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  padding: 0;
+  background-color: rgb(234, 255, 224);
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-container {
+    flex: 1;
+}

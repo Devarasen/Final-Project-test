@@ -1,0 +1,22 @@
+[
+  {
+    "username": "alice123",
+    "password": "hashed_password_here",
+    "email": "alice@email.com",
+    "profile": {
+      "name": "Alice",
+      "bio": "Love photography and traveling.",
+      "image": "path_to_image/alice.jpg"
+    }
+  },
+  {
+    "username": "bob456",
+    "password": "hashed_password_here",
+    "email": "bob@email.com",
+    "profile": {
+      "name": "Bob",
+      "bio": "A foodie and a chef.",
+      "image": "path_to_image/bob.jpg"
+    }
+  }
+]
