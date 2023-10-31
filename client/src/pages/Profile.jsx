@@ -1,34 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 import AuthService from '../utils/auth'; 
-const Profile = () => {
-    const [currentUser, ] = useState({
-        username: AuthService.getUsername(),  
-        ecoActions: [],
-        totalGreenCoins: 0
-    });
-    const [donationAmount, setDonationAmount] = useState(0);
+import { useQuery } from '@apollo/client';
+import { GET_SINGLE_USER_POST } from '../utils/queries';
+import { useParams } from 'react-router-dom';
+import moment from 'moment'; 
 
+const userIdAuth = AuthService.getUserId();
+
+const Profile = () => {
+    const { userIdParams } = useParams();
+
+    const [currentUser, setCurrentUser] = useState({
+        username: AuthService.getUsername(),
+        totalGreenCoins: 0,
+    });
+
+    const [isOwnProfile, setIsOwnProfile] = useState(false);
+    const [activeUserId, setActiveUserId] = useState(null);
+
+    useEffect(() => {
+        if (!userIdParams || userIdParams === 'me' || userIdParams === userIdAuth) {
+            setIsOwnProfile(true);
+            setActiveUserId(userIdAuth);
+        } else {
+            setIsOwnProfile(false);
+            setActiveUserId(userIdParams);
+        }
+    }, [userIdParams, userIdAuth]);
+
+    const { loading, error, data } = useQuery(GET_SINGLE_USER_POST, {
+        variables: { userId: activeUserId },
+        skip: !activeUserId  // Skip the query if activeUserId is not set
+    });
+
+    const formatTimestamp = (timestamp) => {
+        if (!timestamp) return 'No timestamp available';
+        const formattedDate = moment(Number(timestamp)).format('DD/MM/YY, h:mm a');
+        return formattedDate === 'Invalid date' ? 'No timestamp available' : formattedDate;
+    };
+
+    const [donationAmount, setDonationAmount] = useState(0);
   
     const handleDonation = () => {
         if (donationAmount > 0) {
-            
+            // Handle donation logic here...
         }
     };
 
+    const profileUsername = data && data.getUserPosts && data.getUserPosts[0] 
+                         ? data.getUserPosts[0].author.username 
+                         : '';
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
     return (
         <div className="dashboard">
-            
             <div className="eco-actions">
-                {/* <h2>Dashboard</h2> */}
-                <h3>Welcome, {currentUser.username}!</h3>
+                <h3>{isOwnProfile ? `Welcome, ${profileUsername}!` : `Profile of ${profileUsername}`}</h3>
                 <h4>Recent Eco-Actions:</h4>
                 <ul>
-                    {currentUser.ecoActions.map((action, index) => (
-                        <li key={index}>
-                            {action.action} - {action.greenCoinsEarned} Green Coins
+                {data && data.getUserPosts && data.getUserPosts.map(post => (
+                        <li key={post._id}>
+                            <p>{post.content}</p>
+                            <p>By: {post.author.username}</p>
+                            <p>Date: {formatTimestamp(post.timestamp)}</p>
                         </li>
-                    ))}
+                    ))}          
                 </ul>                
             </div>
 
@@ -52,12 +91,12 @@ const Profile = () => {
                 <div className='profile-section'>
                     <p>Set your Name:</p>
                     <input placeholder="Set new name"></input>
-                    <button onClick={handleDonation}> Confirm </button>
+                    <button> Confirm </button>
                     <p>Set your Bio:</p>
                     <textarea rows="2" placeholder="Set new bio"></textarea>
-                    <button onClick={handleDonation}> Confirm </button>
+                    <button> Confirm </button>
                     <p>Set your Avatar:</p>
-                    <button onClick={handleDonation}> Choose Avatar </button>
+                    <button> Choose Avatar </button>
                 </div>
             </div>
         </div>
@@ -65,10 +104,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-
-
-
-
-
-
