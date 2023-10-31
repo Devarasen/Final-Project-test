@@ -6,7 +6,18 @@ class AuthService {
     const token = this.getToken();
     if (token) {
       const decodedToken = decode(token);
+      console.log(decodedToken.data);
       return decodedToken.data.username; // Extracting only username
+    }
+    return "Guest"; // Default value
+  }
+
+  getUserId() {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = decode(token);
+      console.log(decodedToken.data);
+      return decodedToken.data._id; // Extracting only id
     }
     return "Guest"; // Default value
   }

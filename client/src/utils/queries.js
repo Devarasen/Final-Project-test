@@ -72,3 +72,39 @@ export const GET_USER_PROFILE = gql`
     }
   }
 `;
+
+export const GET_SINGLE_USER_POST = gql`
+  query GetUserPosts($userId: ID!) {
+    getUserPosts(userId: $userId) {
+      _id
+      content
+      timestamp
+      author {
+        _id
+        username
+      }
+      comments {
+        _id
+        content
+        timestamp
+        author {
+          _id
+          username
+        }
+      }
+      donations {
+        _id
+        amount
+        timestamp
+        donor {
+          _id
+          username
+        }
+        receiver {
+          _id
+          username
+        }
+      }
+    }
+  }
+`;
