@@ -49,7 +49,7 @@ const LoginForm = () => {
       <form onSubmit={handleFormSubmit}>
         {showAlert && <div className='alert alert-danger'>Something went wrong with your login credentials!</div>}
         <div>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='email'>Email : </label>
           <input 
             type='text'
             placeholder='Your email'
@@ -61,7 +61,7 @@ const LoginForm = () => {
         </div>
 
         <div>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password'>Password : </label>
           <input 
             type='password'
             placeholder='Your password'

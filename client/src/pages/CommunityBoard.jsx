@@ -2,15 +2,22 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ALL_POSTS } from '../utils/queries';
-import { CREATE_POST } from '../utils/mutations';
+import { CREATE_POST, ADD_COMMENT } from '../utils/mutations'; 
 import moment from 'moment';
 import '../styles/CommunityBoard.css';
 
 const CommunityBoard = () => {
   const [newPost, setNewPost] = useState('');
+  const [newComment, setNewComment] = useState('');
   const [openedPostId, setOpenedPostId] = useState(null);
+
   const { data, loading, error } = useQuery(GET_ALL_POSTS);
+
   const [createPost] = useMutation(CREATE_POST, {
+    refetchQueries: [{ query: GET_ALL_POSTS }],
+  });
+
+  const [addComment] = useMutation(ADD_COMMENT, {
     refetchQueries: [{ query: GET_ALL_POSTS }],
   });
 
@@ -21,6 +28,17 @@ const CommunityBoard = () => {
         setNewPost('');
       } catch (err) {
         console.error('Error creating post:', err);
+      }
+    }
+  };
+
+  const handleCommentSubmit = async (postId) => {
+    if (newComment.trim() !== '') {
+      try {
+        await addComment({ variables: { postId, content: newComment } });
+        setNewComment('');
+      } catch (err) {
+        console.error('Error adding comment:', err);
       }
     }
   };
@@ -54,11 +72,11 @@ const CommunityBoard = () => {
         />
         <button onClick={handlePostSubmit}>Post</button>
       </div>
+
       <div className="posts">
         {data?.getAllPosts?.map((post) => (
           <div className="post" key={post._id}>
             <div className="post-user">
-              {/* <img src={post?.author?.profile?.image} alt="User Avatar" /> */}
               <Link to={`/profile/${post?.author?._id}`}>
                 <span>{post?.author?.username}</span>
               </Link>
@@ -67,8 +85,11 @@ const CommunityBoard = () => {
             <div className="post-content">
               <p>{post.content}</p>
             </div>
-            
-            <button onClick={() => toggleComments(post._id)}> See Comments</button>
+
+            {/* Show 'See Comments' only if there are comments */}
+            {post.comments.length > 0 && (
+              <button onClick={() => toggleComments(post._id)}>See Comments</button>
+            )}
 
             {openedPostId === post._id && post.comments.map(comment => (
               <div className="comment" key={comment.timestamp}>
@@ -76,9 +97,22 @@ const CommunityBoard = () => {
                 <div>{formatTimestamp(comment.timestamp)}</div>
               </div>
             ))}
+
+            {/* The comment form will always be visible for each post */}
+            <div className="comment-form">
+              <textarea
+                rows="2"
+                placeholder="Add your comment..."
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+              />
+              <button onClick={() => handleCommentSubmit(post._id)}>Comment</button>
+            </div>
+
           </div>
         ))}
       </div>
+
       <button className="see-more-btn">See More</button>
     </div>
   );

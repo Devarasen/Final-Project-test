@@ -85,13 +85,19 @@
 .donation-input .tooltip-container:hover .tooltip {
     display: inline-block;
 }
- .profile-section {
+
+.profile-section {
     padding-bottom: 30px;
     border: 2px solid black; 
     border-radius: 20px;
     margin-left: 20px;
     font-size: 10px;
     margin-top: 20px;
+ }
+
+ .profile-section input {
+    width: 60%;
+
  }
 
 .profile-section button {
@@ -109,3 +115,4 @@
 .profile-section button:hover {
     background-color: #45a049;
 }
+

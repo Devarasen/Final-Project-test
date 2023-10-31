@@ -11,12 +11,12 @@ function LandingPage() {
 
   useEffect(() => {
     if (AuthService.loggedIn()) {
-      navigate('/profile');
+      navigate('/me');
     }
   }, [navigate]);
 
   const handleSuccessfulLogin = () => {
-    navigate('/profile');
+    navigate('/me');
   };
 
   const handleSuccessfulSignUp = () => {

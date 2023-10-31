@@ -36,3 +36,22 @@ export const CREATE_POST = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation AddComment($postId: ID!, $content: String!) {
+    addComment(postId: $postId, content: $content) {
+      _id
+      content
+      author {
+        username
+      }
+      comments {
+        content
+        author {
+          username
+        }
+        timestamp
+      }
+    }
+  }
+`;

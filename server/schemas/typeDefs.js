@@ -24,7 +24,6 @@ const typeDefs = gql`
     timestamp: String!
     comments: [Comment]
     donations: [Donation]
-    
   }
 
   type Comment {
@@ -50,6 +49,8 @@ const typeDefs = gql`
     getAllPosts: [Post]
     getUserPosts(userId: ID!): [Post]
     getUserProfile(userId: ID!): User
+    getAllComments: [Comment]
+    getCommentById(id: ID!): Comment
   }
 
   type Mutation {
@@ -57,6 +58,7 @@ const typeDefs = gql`
     addUser(input: UserInput!): Auth
     createPost(content: String!): Post
     makeDonation(donorId: ID!, receiverId: ID!, amount: Int!): Donation
+    addComment(postId: ID!, content: String!): Post
   }
 
   input UserInput {

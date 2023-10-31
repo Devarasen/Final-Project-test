@@ -24,7 +24,7 @@ function Header() {
                 <Link to="/community">Community Board</Link>
               </li>
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link to="/me">Profile</Link>
               </li>
             </>
           )}

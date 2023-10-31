@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Profile.css';
 import AuthService from '../utils/auth'; 
-const Dashboard = () => {
+const Profile = () => {
     const [currentUser, ] = useState({
         username: AuthService.getUsername(),  
         ecoActions: [],
@@ -51,10 +51,10 @@ const Dashboard = () => {
                 </div>
                 <div className='profile-section'>
                     <p>Set your Name:</p>
-                    <input></input>
+                    <input placeholder="Set new name"></input>
                     <button onClick={handleDonation}> Confirm </button>
                     <p>Set your Bio:</p>
-                    <input></input>
+                    <textarea rows="2" placeholder="Set new bio"></textarea>
                     <button onClick={handleDonation}> Confirm </button>
                     <p>Set your Avatar:</p>
                     <button onClick={handleDonation}> Choose Avatar </button>
@@ -64,7 +64,7 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Profile;
 
 
 

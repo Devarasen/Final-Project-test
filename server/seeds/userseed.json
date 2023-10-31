@@ -1,7 +1,7 @@
 [
   {
     "username": "alice123",
-    "password": "hashed_password_here",
+    "password": "abcd1234",
     "email": "alice@email.com",
     "profile": {
       "name": "Alice",
@@ -11,7 +11,7 @@
   },
   {
     "username": "bob456",
-    "password": "hashed_password_here",
+    "password": "abcd1234",
     "email": "bob@email.com",
     "profile": {
       "name": "Bob",

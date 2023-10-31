@@ -18,6 +18,7 @@ export const GET_ALL_POSTS = gql`
       timestamp
       author {
         username
+        _id
         profile {
           image
         }
@@ -29,6 +30,45 @@ export const GET_ALL_POSTS = gql`
         }
         timestamp
       }
+    }
+  }
+`;
+
+export const GET_USER_PROFILE = gql`
+  query GetUserProfile($id: ID!) {
+    getUserProfile(userId: $id) {
+      _id
+      username
+      email
+      profile {
+        name
+        bio
+        image
+      }
+      posts {
+        _id
+        content
+        timestamp
+        comments {
+          _id
+          content
+          timestamp
+        }
+        donations {
+          _id
+          amount
+          timestamp
+        }
+      }
+      donationsReceived {
+        _id
+        donor {
+          username
+        }
+        amount
+        timestamp
+      }
+      greenCoins
     }
   }
 `;

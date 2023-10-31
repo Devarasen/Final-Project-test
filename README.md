@@ -1,5 +1,5 @@
 
-Heroku Deployed App: https://ecorewards-2f037cf0b8c1.herokuapp.com/
+Heroku Deployed App: https://ecorewards-ds-e3b680d70ed8.herokuapp.com/
 
 Github Repo: https://github.com/Devarasen/EcoRewards
 

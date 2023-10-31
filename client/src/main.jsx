@@ -22,7 +22,11 @@ const router = createBrowserRouter([
         element: <CommunityBoard />
       },
       {
-        path: '/profile/',  
+        path: '/me',  
+        element: <Profile />
+      },
+      {
+        path: '/profile/:profileID',  
         element: <Profile />
       }
 

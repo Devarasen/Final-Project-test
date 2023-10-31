@@ -54,7 +54,7 @@ const SignupForm = () => {
         {showAlert && <div className='alert alert-danger'>Something went wrong with your signup!</div>}
         
         <div>
-          <label htmlFor='username'>Username</label>
+          <label htmlFor='username'>Username : </label>
           <input 
             type='text'
             placeholder='Your username'
@@ -66,7 +66,7 @@ const SignupForm = () => {
         </div>
 
         <div>
-          <label htmlFor='email'>Email</label>
+          <label htmlFor='email'>Email : </label>
           <input 
             type='email'
             placeholder='Your email address'
@@ -78,7 +78,7 @@ const SignupForm = () => {
         </div>
 
         <div>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password'>Password : </label>
           <input 
             type='password'
             placeholder='Your password'
